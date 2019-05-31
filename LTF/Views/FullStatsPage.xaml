@@ -1,0 +1,118 @@
+﻿<Page
+    x:Class="LTF.Views.FullStatsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid 
+        x:Name="ContentArea"
+        Margin="{StaticResource SmallLeftRightMargin}">
+        <Pivot
+            x:Name="Items">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Text="{Binding}"
+                        Style="{ThemeResource SubtitleTextBlockStyle}" />
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <PivotItem x:Uid="FullStats_PivotItem1">
+                <Grid Background="{ThemeResource BckBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Charting:Chart x:Name="chartseries" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{ThemeResource RegionBrush}" Grid.Column="0" Height="640" Width="900">
+                            <Charting:Chart.Palette>
+                                <Charting:ResourceDictionaryCollection>
+                                    <ResourceDictionary>
+                                        <Style x:Key="DataPointStyle" TargetType="Control">
+                                            <Setter Property="Background" Value="#D63A3A"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                    <ResourceDictionary>
+                                        <Style x:Key="DataPointStyle" TargetType="Control">
+                                            <Setter Property="Background" Value="#0D2644"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Charting:ResourceDictionaryCollection>
+                            </Charting:Chart.Palette>
+                            <Charting:LineSeries Title="Správne odpovede" Margin="0" IndependentValuePath="Category" DependentValuePath="Value" IsSelectionEnabled="True"/>
+                            <Charting:LineSeries Title="Nesprávne odpovede" Margin="0" IndependentValuePath="CategoryInc" DependentValuePath="ValueInc" IsSelectionEnabled="True"/>
+                        </Charting:Chart>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+            
+            <PivotItem x:Uid="FullStats_PivotItem2">
+                <Grid Background="{ThemeResource BckBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Charting:Chart x:Name="chartavgseries" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{ThemeResource RegionBrush}" Grid.Column="0" Height="640" Width="900">
+                            <Charting:Chart.Palette>
+                                <Charting:ResourceDictionaryCollection>
+                                    <ResourceDictionary>
+                                        <Style x:Key="DataPointStyle" TargetType="Control">
+                                            <Setter Property="Background" Value="#D63A3A"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Charting:ResourceDictionaryCollection>
+                            </Charting:Chart.Palette>
+                            <Charting:LineSeries Title="Priemerný čas odpovede" Margin="0" IndependentValuePath="CategoryAvg" DependentValuePath="ValueAvg" IsSelectionEnabled="True"/>
+                        </Charting:Chart>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+
+            <PivotItem x:Uid="FullStats_PivotItem3">
+                <Grid Background="{ThemeResource BckBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Charting:Chart x:Name="chartmarkseries" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{ThemeResource RegionBrush}" Grid.Column="0" Height="640" Width="900">
+                            <Charting:Chart.Palette>
+                                <Charting:ResourceDictionaryCollection>
+                                    <ResourceDictionary>
+                                        <Style x:Key="DataPointStyle" TargetType="Control">
+                                            <Setter Property="Background" Value="#D63A3A"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Charting:ResourceDictionaryCollection>
+                            </Charting:Chart.Palette>
+                            <Charting:LineSeries Title="Priemerná známka z testu" Margin="0" IndependentValuePath="CategoryMark" DependentValuePath="ValueMark" IsSelectionEnabled="True"/>
+                        </Charting:Chart>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+
+            <PivotItem x:Uid="FullStats_PivotItem3">
+                <Grid Background="{ThemeResource BckBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Charting:Chart x:Name="chartpercentageseries" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{ThemeResource RegionBrush}" Grid.Column="0" Height="640" Width="900">
+                            <Charting:Chart.Palette>
+                                <Charting:ResourceDictionaryCollection>
+                                    <ResourceDictionary>
+                                        <Style x:Key="DataPointStyle" TargetType="Control">
+                                            <Setter Property="Background" Value="#D63A3A"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Charting:ResourceDictionaryCollection>
+                            </Charting:Chart.Palette>
+                            <Charting:LineSeries Title="Percentuálne ohodnotenie testu" Margin="0" IndependentValuePath="CategoryPercentage" DependentValuePath="ValuePercentage" IsSelectionEnabled="True"/>
+                        </Charting:Chart>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

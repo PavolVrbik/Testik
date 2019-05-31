@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="LTF.Views.TesterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid Background="{ThemeResource RegionBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Answer1" Content="Odpoveď" HorizontalAlignment="Center" Grid.Column="0" Margin="0,60,0,0" VerticalAlignment="Center" Height="47" Width="126" FontSize="20" Click="Answer1_Click"/>
+                <Button x:Name="Answer2" Content="Odpoveď" HorizontalAlignment="Center" Grid.Column="1" Margin="0,60,0,0" VerticalAlignment="Center" Height="47" Width="126" FontSize="20" Click="Answer2_Click"/>
+                <Button x:Name="Answer3" Content="Odpoveď" HorizontalAlignment="Center" Grid.Column="2" Margin="0,60,0,0" VerticalAlignment="Center" Height="47" Width="126" FontSize="20" Click="Answer3_Click"/>
+                <Button x:Name="Answer4" Content="Odpoveď" HorizontalAlignment="Center" Grid.Column="3" Margin="0,60,0,0" VerticalAlignment="Center" Height="47" Width="126" FontSize="20" Click="Answer4_Click"/>
+                <Button x:Name="Answer5" Content="Odpoveď" HorizontalAlignment="Center" Grid.Column="4" Margin="0,60,0,0" VerticalAlignment="Center" Height="47" Width="126" FontSize="20" Click="Answer5_Click"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="Question" HorizontalAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Margin="0,190,0,0" Text="Pripravujem otázku, prosím čakajte ..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="26" Height="65" Width="589"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar x:Name="ProgressBarTime" HorizontalAlignment="Center" Margin="0,560,0,0" Grid.Column="0" Minimum="0" Height="40" VerticalAlignment="Top" Width="764" />
+                <TextBlock x:Name="Timer" HorizontalAlignment="Center" Margin="0,520,0,0" Grid.Column="0" FontSize="22" Text="X" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <ProgressRing x:Name="Ring" HorizontalAlignment="Center" Margin="0,150,0,0" Grid.Column="0" VerticalAlignment="Top" Height="40" Width="40"/>
+            </Grid>
+            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+        </Grid>
+
+    </Grid>
+</Page>

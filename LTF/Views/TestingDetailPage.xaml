@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="LTF.Views.TestingDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    mc:Ignorable="d">
+
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}"
+        animations:Connected.AnchorElement="{x:Bind itemHero}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--641 is the default CompactModeThresholdWidth in NavigationView -->
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="propertiesGroup1.(RelativePanel.RightOf)" Value="itemHero" />
+                        <Setter Target="propertiesGroup1.(RelativePanel.Below)" Value="title" />
+                        <Setter Target="propertiesGroup2.(RelativePanel.RightOf)" Value="propertiesGroup1" />
+                        <Setter Target="propertiesGroup2.(RelativePanel.Below)" Value="title" />
+                        <Setter Target="propertiesGroup1.Width" Value="200" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel
+            x:Name="contentPanel">
+
+            <RelativePanel>
+                <Grid
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    x:Name="itemHero"
+                    animations:Connected.Key="animationKeyTesting"
+                    Width="200"
+                    Height="200"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                    Margin="{StaticResource SmallRightMargin}"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                    <FontIcon
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Glyph="{x:Bind ViewModel.Item.Symbol}" FontSize="70" />
+                </Grid>
+
+                <TextBlock
+                    x:Name="title"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.RightOf="itemHero"
+                    Text="{x:Bind ViewModel.Item.TestName, Mode=OneWay}"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Margin="{StaticResource XXSmallTopMargin}" />
+
+                <StackPanel x:Name="propertiesGroup1" RelativePanel.Below="itemHero">
+                    <StackPanel x:Name="statusGroup" Margin="{StaticResource SmallTopMargin}">
+                        <TextBlock Text="Status" Style="{StaticResource DetailSubTitleStyle}" />
+                        <TextBlock Text="{x:Bind ViewModel.Item.Status}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                    </StackPanel>
+
+                    <StackPanel x:Name="orderDateGroup" Margin="{StaticResource SmallTopMargin}">
+                        <TextBlock Text="Dátum vytvorenia" Style="{StaticResource DetailSubTitleStyle}" />
+                        <TextBlock Text="{x:Bind ViewModel.Item.CreateDate}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="propertiesGroup2" RelativePanel.Below="propertiesGroup1">
+                    <StackPanel x:Name="shipToGroup" Margin="{StaticResource SmallTopMargin}">
+                        <TextBlock Text="Kategória" Style="{StaticResource DetailSubTitleStyle}" />
+                        <TextBlock Text="{x:Bind ViewModel.Item.ShortName}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                    </StackPanel>
+                </StackPanel>
+
+            </RelativePanel>
+
+            <TextBlock Text="Ako prebieha testovanie?" FontWeight="SemiBold" Style="{StaticResource DetailSubTitleStyle}" Margin="{StaticResource SmallTopMargin}" />
+            <TextBlock Style="{StaticResource DetailBodyStyle}" Text="Testovanie alebo precvičovanie sa automaticky spustí po kliknutí na tlačidlo Spustiť testovanie, ktoré nájdeš nižšie na tejto stránke. Po spustení sa hneď zobrazí daný príklad, začne sa odpočítavanie času. Do konca odpočítavania musíš zadať svoju odpoveď, inak bude príklad označený ako nevyriešený/nesprávne vyriešený. Na príklady odpovedaj až dovtedy, dokým sa nezobrazí výsledková/štatistická stránka. Na tej sa dozvieš, ako si si v teste počínal, na koľko otázok si odpovedal správne, na koľko nesprávne a tiež sa dozvieš svoju známku." />
+
+            <TextBlock Text="Upozornenie" FontWeight="SemiBold" Style="{StaticResource DetailSubTitleStyle}" Margin="{StaticResource SmallTopMargin}" />
+            <TextBlock Style="{StaticResource DetailBodyStyle}" Margin="{StaticResource MediumBottomMargin}" Text="Podrobné štatistiky sa zaznamenajú až po úlnom dokončení testovania. Pokiaľ sa testovanie nejakým spôsobom preruší, nebude môžné proces vrátiť späť. Všetky uvedené štatistiky (vrátane známky a bodov) sú informačné a zostávajú uložené len v tomto počítači. Nikto iný k ním teda nemá prístup." />
+            <Button Content="Spustiť testovanie" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,60,0,0" Click="Button_Click" Width="298"/>
+            <Button Content="Zobraziť štatistiky testu" HorizontalAlignment="Center" VerticalAlignment="Stretch"  Click="Button_Click_Stats" Width="298" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
