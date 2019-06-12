@@ -281,8 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <Content Include="Assets\Data\data70 - old.json" />
-    <Content Include="Assets\Data\data70.json" />
     <Content Include="Assets\Data\data70003.json" />
     <None Include="LTF_TemporaryKey.pfx" />
   </ItemGroup>
